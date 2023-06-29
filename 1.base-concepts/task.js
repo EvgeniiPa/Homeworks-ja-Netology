@@ -23,11 +23,13 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
 
   let bodyCredit = amount - contribution;
 
-  let payMonth =
-    bodyCredit *
-    (interestRate + interestRate / ((1 + interestRate) ** countMonths - 1));
+  let payMonth = interestRate / ((1 + interestRate) ** countMonths - 1);
 
-  let totalSum = peyMonth * countMonths;
+  payMonth = interestRate + payMonth;
+
+  payMonth = bodyCredit * payMonth;
+
+  let totalSum = payMonth * countMonths;
 
   totalSum = totalSum.toFixed(2);
 
