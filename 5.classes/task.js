@@ -76,5 +76,5 @@ class DetectiveBook extends Book {
 //     }
 //   }
 
-//   findBookBy(type, value) {}
+//
 // }
