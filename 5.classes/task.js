@@ -34,7 +34,7 @@ class Magazine extends PrintEditionItem {
 }
 
 class Book extends PrintEditionItem {
-  constructor(name, releaseDate, pagesCount, author) {
+  constructor(author, name, releaseDate, pagesCount) {
     super(name, releaseDate, pagesCount);
     this.type = "book";
     this.author = author;
@@ -42,39 +42,58 @@ class Book extends PrintEditionItem {
 }
 
 class NovelBook extends Book {
-  constructor(name, releaseDate, pagesCount, author) {
-    super(name, releaseDate, pagesCount, author);
+  constructor(author, name, releaseDate, pagesCount) {
+    super(author, name, releaseDate, pagesCount);
     this.type = "novel";
   }
 }
 
 class FantasticBook extends Book {
-  constructor(name, releaseDate, pagesCount, author) {
-    super(name, releaseDate, pagesCount, author);
+  constructor(author, name, releaseDate, pagesCount) {
+    super(author, name, releaseDate, pagesCount);
     this.type = "fantastic";
   }
 }
 
 class DetectiveBook extends Book {
-  constructor(name, releaseDate, pagesCount, author) {
-    super(name, releaseDate, pagesCount, author);
+  constructor(author, name, releaseDate, pagesCount) {
+    super(author, name, releaseDate, pagesCount);
     this.type = "detective";
   }
 }
 
 // Задание №2
 
-// class Library {
-//   constructor(name) {
-//     this.name = name;
-//     this.books = [];
-//   }
+class Library {
+  constructor(name) {
+    this.name = name;
+    this.books = [];
+  }
 
-//   addBook(book) {
-//     if (book.state > 30) {
-//       this.books.push(book);
-//     }
-//   }
+  addBook(book) {
+    if (book.state > 30) {
+      this.books.push(book);
+    }
+  }
 
-//
-// }
+  findBookBy(type, value) {
+    for (let i = 0; i < this.books.length; i++) {
+      if (this.books[i].type == value) {
+        return this.books[i];
+      } else {
+        return null;
+      }
+    }
+  }
+
+  giveBookByName(bookName) {
+    for (let i = 0; i < this.books.length; i++) {
+      if (this.books[i].name == bookName) {
+        return this.books[i];
+        delete this.books[i];
+      } else {
+        return null;
+      }
+    }
+  }
+}
