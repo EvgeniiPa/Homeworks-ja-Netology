@@ -25,9 +25,9 @@ class Triangle {
     this.c = c;
 
     if (
-      this.a + this.b < this.c ||
-      this.a + this.c < this.b ||
-      this.c + this.b < this.a
+      this.a + this.b <= this.c ||
+      this.a + this.c <= this.b ||
+      this.c + this.b <= this.a
     ) {
       throw new Error("Треугольник с такими сторонами не существует");
     }
@@ -46,8 +46,7 @@ class Triangle {
         (halfPerimeter - this.b) *
         (halfPerimeter - this.c)
     );
-    s.toFixed();
-    return +s.toFixed();
+    return +s.toFixed(3);
   }
 }
 
