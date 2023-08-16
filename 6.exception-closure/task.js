@@ -35,7 +35,7 @@ class Triangle {
   }
 
   get area() {
-    let halfPerimeter = (this.a + this.b + this.c) / 2;
+    let halfPerimeter = this.perimeter / 2;
     let s = Math.sqrt(
       halfPerimeter *
         (halfPerimeter - this.a) *
