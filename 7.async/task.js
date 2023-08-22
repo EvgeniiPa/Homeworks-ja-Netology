@@ -54,7 +54,7 @@ class AlarmClock {
   }
 
   resetAllCalls() {
-    this.alarmCollection.forEach((item) => item.canCall == true);
+    this.alarmCollection.forEach((item) => (item.canCall = true));
   }
 
   clearAlarms() {
