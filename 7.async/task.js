@@ -21,35 +21,39 @@ class AlarmClock {
   }
 
   removeClock(time) {
-    this.alarmCollection.find((item) => {
-      if (item.time == time) {
-        delete this.alarmCollection.item;
-      }
-    });
+    this.alarmCollection = this.alarmCollection.filter(
+      (item) => item.time !== time
+    );
   }
 
   getCurrentFormattedTime() {
     let getTime = new Date();
-    return String(getTime.getHours() + ":" + getTime.getMinutes());
+    return getTime.toLocaleTimeString("ru-Ru", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
   }
 
   start() {
-    if (this.intervalId == null) {
+    if (this.intervalId != null) {
       return;
     }
 
     this.intervalId = setInterval(() => {
       this.alarmCollection.forEach((item) => {
-        if (this.getCurrentFormattedTime == item.time && item.canCall == true) {
+        if (
+          this.getCurrentFormattedTime() == item.time &&
+          item.canCall == true
+        ) {
           item.canCall = false;
-          callback();
+          this.callback;
         }
       });
     }, 1000);
   }
 
   stop() {
-    clearInterval();
+    clearInterval(this.intervalId);
     this.intervalId = null;
   }
 
