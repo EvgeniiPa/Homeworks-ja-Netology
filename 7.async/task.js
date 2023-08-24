@@ -46,7 +46,7 @@ class AlarmClock {
           item.canCall == true
         ) {
           item.canCall = false;
-          item.callback;
+          item.callback();
         }
       });
     }, 1000);
